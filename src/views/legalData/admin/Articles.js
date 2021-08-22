@@ -138,7 +138,7 @@ newArticle() {
 
   retrieveDocuments() {
     const user = AuthService.getCurrentUser();
-    DocumentDataService.getAll()
+    DocumentDataService.getAllDocs()
       .then(response => {
         this.setState({
           documents: response.data
