@@ -38,10 +38,10 @@ class SimpleFooter extends React.Component {
             <Row className=" row-grid align-items-center mb-5">
               <Col lg="6">
                 <h3 className=" text-primary font-weight-light mb-2">
-                  Thank you for supporting us!
+                  Merci de nous soutenir !
                 </h3>
                 <h4 className=" mb-0 font-weight-light">
-                  Let's get in touch on any of these platforms.
+                  Restons en contact
                 </h4>
               </Col>
               <Col className="text-lg-center btn-wrapper" lg="6">
@@ -112,7 +112,7 @@ class SimpleFooter extends React.Component {
                     href="https://www.creative-tim.com?ref=adsr-footer"
                     target="_blank"
                   >
-                    Creative Tim
+                    Legaloa
                   </a>
                   .
                 </div>
