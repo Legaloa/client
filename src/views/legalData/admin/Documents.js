@@ -10,7 +10,6 @@ import axios from 'axios';
 import ProgressBar from "@ramonak/react-progress-bar";
 import {apiUrl} from "../../../variables/url.js";
 
-import AuthService from "../../../services/auth.service";
 // reactstrap components
 import {
   Card,
