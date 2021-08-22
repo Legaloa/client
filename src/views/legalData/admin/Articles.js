@@ -48,6 +48,11 @@ class Articles extends React.Component {
       selectedFile: null,
       progress: 0
      };
+
+     const user = AuthService.getCurrentUser();
+     if(!user){
+       return this.props.history.push('/login');
+     }
   }
 
 

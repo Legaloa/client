@@ -64,7 +64,7 @@ export default class BoardSearch extends Component {
       hidden: false,
 
       currentPage: 1,
-      todosPerPage: 50,
+      todosPerPage: 20,
       message: "",
 
       currentUser: undefined

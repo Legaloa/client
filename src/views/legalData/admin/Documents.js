@@ -76,18 +76,6 @@ class Documents extends React.Component {
      if(!user){
        return this.props.history.push('/login');
      }
-     if (user) {
-       this.setState({
-         currentUser: user,
-         showUserBoard: user.roles.includes("ROLE_USER"),
-         showAdminBoard: user.roles.includes("ROLE_ADMIN"),
-       });
-     }
-     const {showAdminBoard } = this.state;
-     console.log(showAdminBoard);
-     if(!showAdminBoard){
-      return this.props.history.push('/login');
-    }
   }
 
    // On file select (from the pop up) 
