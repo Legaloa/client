@@ -9,6 +9,8 @@ import TypeDataService from "../../../services/type.service";
 import axios from 'axios';
 import ProgressBar from "@ramonak/react-progress-bar";
 import {apiUrl} from "../../../variables/url.js";
+
+import AuthService from "../../services/auth.service";
 // reactstrap components
 import {
   Card,
@@ -52,6 +54,7 @@ class Documents extends React.Component {
       idDocument: null,
       currentIndex: -1,
       currentUser: undefined,
+      showAdminBoard: false,
 
       id: null,
       numero: "", 
@@ -69,6 +72,23 @@ class Documents extends React.Component {
       selectedFile: null,
       progress: 0
      };
+
+     const user = AuthService.getCurrentUser();
+     if(!user){
+       return this.props.history.push('/login');
+     }
+     if (user) {
+       this.setState({
+         currentUser: user,
+         showUserBoard: user.roles.includes("ROLE_USER"),
+         showAdminBoard: user.roles.includes("ROLE_ADMIN"),
+       });
+     }
+     const {showAdminBoard } = this.state;
+     console.log(showAdminBoard);
+     if(!showAdminBoard){
+      return this.props.history.push('/login');
+    }
   }
 
    // On file select (from the pop up) 

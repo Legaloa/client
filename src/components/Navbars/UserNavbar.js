@@ -96,9 +96,14 @@ class UserNavbar extends React.Component {
               </div>
               <Nav className="ml-lg-auto" navbar>
               {showAdminBoard && (
-                  <NavLink href="/board-admin" to={"/board-admin"} className="nav-link">
+                 <div className="navbar-nav ml-auto">
+                  <NavLink href="/document-page" to={"/document-page"} className="nav-link">
                     Ajouter documents 
                   </NavLink>
+                  <NavLink href="/article-page" to={"/article-page"} className="nav-link">
+                    Ajouter articles 
+                  </NavLink>
+                  </div>
                   
               )}
               {currentUser ? (
