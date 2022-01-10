@@ -229,7 +229,7 @@ class Landing extends React.Component {
                           color="default"
                           href="login-page"
                         >
-                          <span className="btn-inner--text">Testez gratuitement</span>
+                          <span className="btn-inner--text">Testez gratuitement.</span>
                         </Button>
                       </div>
                     </ul>
