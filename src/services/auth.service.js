@@ -1,6 +1,6 @@
 import axios from "axios";
 import {apiUrl} from "../variables/url.js";
-
+import http from "../http-common";
 const API_URL =  apiUrl[0]+"auth/";
 
 class AuthService {
@@ -23,17 +23,31 @@ class AuthService {
     localStorage.removeItem("user");
   }
 
-  register(username, email, password) {
+  register(nom, prenom, dateNaissance, code, phone, genre, entreprise, profil,username, email, password) {
     return axios.post(API_URL + "signup", {
+      nom,
+      prenom,
+      dateNaissance,
+      code,
+      phone,
+      genre,
+      entreprise,
+      profil,
       username,
       email,
       password
     });
   }
 
+  update(username, value) {
+    return axios.put(apiUrl[0]+`users/${username}`,   {
+      statusId: value,
+    });
+  }
+
   getCurrentUser() {
     return JSON.parse(localStorage.getItem('user'));;
-  }
+  } 
 }
-
+ 
 export default new AuthService();

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 import {apiUrl} from "../variables/url.js";
+import http from "../http-common";
 
 const API_URL = apiUrl[1]+'api/test/'; 
 
@@ -23,6 +24,10 @@ class UserService {
 
   getAdminBoard() {
     return axios.get(API_URL + 'admin', { headers: authHeader() });
+  }
+
+  findByUsername(username) {
+    return http.get(`/user?username=${username}`); 
   }
 }
 

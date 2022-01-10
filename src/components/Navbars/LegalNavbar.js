@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-scroll';
-
+import Logo from "assets/img/brand/Logo.png";
 // JavaScript plugin that hides or shows a component based on your scroll
 import Headroom from "headroom.js";
-
 // reactstrap components
 import {
   UncontrolledCollapse,
@@ -70,60 +69,47 @@ class LegaNavbars extends React.Component {
       <>
          {/* Navbar primary */}
          <header className="header-global">
-           
          <Navbar
             className="navbar-main navbar-transparent navbar-light headroom"
             expand="lg"
             id="navbar-main"
           >
           <Container>     
-            <NavbarBrand href="#pablo" onClick={e => e.preventDefault()}>
-              Legaloa
+          <NavbarBrand className="mr-lg-5" to="/" tag={Link}>
+                <img
+                  alt="..."
+                  src={Logo}
+                />Legaloa
             </NavbarBrand>
-            <button
-              aria-controls="navbar-primary"
-              aria-expanded={false}
-              aria-label="Toggle navigation"
-              className="navbar-toggler"
-              data-target="#navbar-primary"
-              data-toggle="collapse"
-              id="navbar-primary"
-              type="button"
-            >
-              <span className="navbar-toggler-icon" />
-            </button>
-            <UncontrolledCollapse navbar toggler="#navbar-primary">
+            <button className="navbar-toggler" id="navbar_global">
+                <span className="navbar-toggler-icon" />
+              </button>
+            <UncontrolledCollapse 
+            navbar 
+            toggler="#navbar_global">
               <div className="navbar-collapse-header">
                 <Row>
                   <Col className="collapse-brand" xs="6">
                     <Link to="/">
                       <img
                         alt="..."
-                        src={require("assets/img/brand/blue.png")}
+                        src={Logo}
                       />
                     </Link>
                   </Col>
                   <Col className="collapse-close" xs="6">
-                    <button
-                      aria-controls="navbar-primary"
-                      aria-expanded={false}
-                      aria-label="Toggle navigation"
-                      className="navbar-toggler"
-                      data-target="#navbar-primary"
-                      data-toggle="collapse"
-                      id="navbar-primary"
-                      type="button"
-                    >
-                      <span />
-                      <span />
-                    </button>
+                      <button className="navbar-toggler" id="navbar_global">
+                        <span />
+                        <span />
+                      </button>
                   </Col>
                 </Row>
               </div>
               <Nav className="ml-lg-auto" navbar>   
-                <Link  
+                <NavItem>
+                <div className="navbar-nav ml-auto">   
+                <Link  className="nav-link"
                   href="" 
-                  style={{ paddingTop: 13,color: 'white', padding: 16 }}
                   onClick={this.handleScroll}        
                   to="about"
                   spy={true} 
@@ -131,9 +117,8 @@ class LegaNavbars extends React.Component {
                     À propos <span className="sr-only">(current)</span>
                 </Link >
                 
-                <Link  
+                <Link  className="nav-link"
                   href="" 
-                  style={{ paddingTop: 13,color: 'white', padding: 16 }}
                   onClick={this.handleScroll}        
                   to="test"
                   spy={true} 
@@ -141,9 +126,8 @@ class LegaNavbars extends React.Component {
                     Test gratuit<span className="sr-only">(current)</span>
                 </Link >
 
-                <Link  
+                <Link  className="nav-link"
                   href="" 
-                  style={{ paddingTop: 13,color: 'white', padding: 16 }}
                   onClick={this.handleScroll}        
                   to="tarifs"
                   spy={true} 
@@ -151,34 +135,31 @@ class LegaNavbars extends React.Component {
                     Tarifs <span className="sr-only">(current)</span>
                 </Link >
 
-                <Link  
+                <Link  className="nav-link"
                   href="" 
-                  style={{ paddingTop: 13,color: 'white', padding: 16 }}
                   onClick={this.handleScroll}        
                   to="contact"
                   spy={true} 
                   smooth={true}>
                     Nous contacter <span className="sr-only">(current)</span>
                 </Link >
-
-                <NavItem>
-                {currentUser ? (
-                  <div className="navbar-nav ml-auto">     
+                {currentUser ? ( 
+                  <>     
                       <NavLink href="/board-search" to={"/board-search"} className="nav-link">
                         Mon espace
                       </NavLink>
                       <a href="/login" className="nav-link" onClick={this.logOut}>
                         LogOut
                       </a>
-                  </div>
+                  </>
                 ) : (
-                  <div className="navbar-nav ml-auto">
+                  <div>
                     <NavLink href="login-page">
                       Connexion
                     </NavLink>
                   </div>
                 )}
-                  
+                </div>
                 </NavItem>
               </Nav>
             </UncontrolledCollapse>

@@ -1,35 +1,130 @@
 import React from "react";
-import classnames from "classnames";
+import { Link } from 'react-scroll';
+import CheckButton from "react-validation/build/button";
+import img from "assets/img/brand/accueil.png";
+import img2 from "assets/img/brand/BigData.png";
+import img3 from "assets/img/brand/Acces.png";
+import img4 from "assets/img/brand/Apropos.png";
+import emailjs from 'emailjs-com';
+
+import  Input from "react-validation/build/input";
+import Textarea from 'react-validation/build/textarea';
+import { isEmail } from "validator";
+import Form from "react-validation/build/form";
 
 // reactstrap components
 import {
-  Badge,
   Button,
   Card,
   CardBody,
   CardImg,
   FormGroup,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
   InputGroup,
   Container,
   Row,
   Col
 } from "reactstrap";
-
 import LegalNavbar from "components/Navbars/LegalNavbar.js";
 import SimpleFooter from "components/Footers/SimpleFooter.js";
+
+const required = value => {
+  console.log("se aplica el required");
+  if (!value) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        Ce champ est obligatoire!
+      </div>
+    );
+  }
+};
+
+const email = value => {
+  if (!isEmail(value)) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        Ceci n'est pas un email valide.
+      </div>
+    );
+  }
+};
+
+
+
 
 // new index page sections
 
 class Landing extends React.Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.sendEmail = this.sendEmail.bind(this);
+    this.onChangeMessage = this.onChangeMessage.bind(this);
+
+    this.state = {
+      message: "",
+      loading: false,
+      successful: false,
+
+    };
+  }
+
+  
+  onChangeMessage(e) {
+    this.setState({
+      message: e.target.value
+    });
+  }
+
+
+  sendEmail(e) {
+    e.preventDefault();
+
+    this.setState({
+      message: "",
+      successful: false,
+      loading: true
+    });
+
+    this.form.validateAll();
+
+    if (this.checkBtn.context._errors.length === 0) {
+      emailjs.sendForm('service_1yt9tqw', 'template_lxed5wc', e.target, 'user_G5zQkiM0RYs1ctpJGQUH5')
+      .then((result) => {
+        this.setState({
+          message: "Message envoyé",
+          successful: true,
+          loading: false
+        });
+        console.log(result.text);
+        console.log(this.message);
+      },
+        error => {
+          const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+
+        this.setState({
+          successful: false,
+          message: resMessage
+        });
+      console.log(error.text);
+        }
+      );
+    } else {
+      this.setState({
+        loading: false
+      });
+    }
+  }
+
   componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     this.refs.main.scrollTop = 0;
   }
+
   render() {
     return (
       <>
@@ -38,41 +133,38 @@ class Landing extends React.Component {
           <div className="position-relative">
             {/* shape Hero */}
             <section className="section section-lg section-shaped pb-250" style={{
-              backgroundImage: `url("https://i1.sndcdn.com/artworks-000210928947-bata5q-t500x500.jpg")`,
+              backgroundImage: `url(${img})`,
               backgroundPosition: 'center',
               backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat'
+              backgroundRepeat: 'no-repeat',
+              paddingTop: '160px'
             }}>
 
               <Container className="py-lg-md d-flex">
                 <div className="col px-0" >
                   <Row>
                     <Col lg="6">
-                      <h1 className="display-3 text-white">
-                        VOTRE PLATEFORME JURIDIQUE 100% en ligne {" "}
+                      <h2 className="display-3 text-black">
+                        VOTRE PLATEFORME JURIDIQUE 100% digitalisée {" "}
                         <span>Simple - Rapide - Efficace</span>
-                      </h1>
-                      <p className="lead text-white">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pellentesque
-                        id diam at porttitor. Nam quis felis tellus. Phasellus sit amet purus elit.
-                        Sed tincidunt at urna vel hendrerit. Donec convallis nibh id volutpat bibendum. .
+                      </h2>
+
+                      <p className="text-black" align="justify">
+                        LEGALOA, la LegalTech dédiée aux professionnels du droit de l’espace
+                        OHADA et aux chercheurs de la diaspora africaine en France et
+                        d’ailleurs. C’est une plateforme juridique utilisant l’intelligence
+                        artificielle pour permettre de retrouver plus facilement et de façon
+                        intuitive le contenu des textes juridiques nationaux (Lois,
+                        règlements, décrets, arrêtés...) et de la jurisprudence des pays
+                        membres de l’OHADA à commencer par le Burkina Faso.
                       </p>
-                      <div className="btn-wrapper">
+                      <div >
                         <Button
-                          className="btn-icon mb-3 mb-sm-0"
-                          color="info"
-                          href="login-page"
-                        >
-                          <span className="btn-inner--text">Testez gratuitement</span>
-                        </Button>
-                        <Button
-                          className="btn-white btn-icon mb-3 mb-sm-0 ml-1"
+                          type="button"
                           color="default"
                           href="register-page"
                         >
-                          <span className="btn-inner--text">
-                            S'enregistrer
-                          </span>
+                          <span className="btn-inner--text">Testez gratuitement</span>
                         </Button>
                       </div>
                     </Col>
@@ -90,50 +182,44 @@ class Landing extends React.Component {
                   <img
                     alt="..."
                     className="img-fluid floating"
-                    src="https://img.freepik.com/free-photo/man-home-working-laptop_23-2148560379.jpg?size=626&ext=jpg"
+                    src={img2}
                   />
+                  <br></br>
+                  <br></br>
+                  <h6>Testez gratuitement votre plateforme
+                    pendant 7 jours.</h6>
                 </Col>
                 <Col className="order-md-1" md="6">
                   <div className="pr-md-5">
-                    <div className="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mb-5">
-                      <i className="ni ni-settings-gear-65" />
-                    </div>
-                    <h3>BIG DATA et VEILLE JURIDIQUES</h3>
-                    <p>
-                      Accéder à toute l'information juridique  en seul clic.
-                      Legaloa regroupe toute la règlementation juridique disponible et la rend accessible directement via son moteur de recherche puissant.
-                      C'est aussi un outil de veille permettant de rester informer sur l'actualité juridique.
+                    <h3>BIG DATA ET VEILLE JURIDIQUES</h3>
+                    <p align="justify">
+                      LEGALOA regroupe toute la règlementation juridique disponible
+                      et la rend accessible directement via son moteur de recherche
+                      intelligent. Faites vos recherches en utilisant également notre
+                      filtre en choisissant les types de documents, domaines du droit,
+                      organismes , ou simplement en tapant une date de référence.
                     </p>
-                    <ul className="list-unstyled mt-5">
+                    <p align="justify">
+                      Grâce à son outil de veille intégré, restez informer sur l'actualité
+                      juridique.
+                    </p>
+                    <ul className="list-unstyled mt-2">
                       <li className="py-2">
                         <div className="d-flex align-items-center">
                           <div>
-                            <Badge
-                              className="badge-circle mr-3"
-                              color="success"
-                            >
-                              <i className="ni ni-settings-gear-65" />
-                            </Badge>
-                          </div>
-                          <div>
-                            <h6 className="mb-0">
-                              Accéder à toute l'information juridique  en seul clic.
-                            </h6>
+                            <p className="mb-0" align="justify">
+                              - Accéder au plus grand fonds juridique burkinabè en un
+                              seul clic.
+                            </p>
                           </div>
                         </div>
                       </li>
                       <li className="py-2">
                         <div className="d-flex align-items-center">
                           <div>
-                            <Badge
-                              className="badge-circle mr-3"
-                              color="success"
-                            >
-                              <i className="ni ni-html5" />
-                            </Badge>
-                          </div>
-                          <div>
-                            <h6 className="mb-0"> Accéder à toute l'information juridique  en seul clic.</h6>
+                            <p className="mb-0" align="justify"> - Tous les textes de l’OHADA (Traités, Règlements &
+                              jurisprudences) ainsi que d’autres organisations régionales
+                              et internationales</p>
                           </div>
                         </div>
                       </li>
@@ -159,7 +245,7 @@ class Landing extends React.Component {
                   <Card className="bg-default shadow border-0">
                     <CardImg
                       alt="..."
-                      src="https://cdn.clinicabaviera.com/blog/wp-content/uploads/2016/09/iStock_89119321_SMALL.jpg"
+                      src={img3}
                       top
                     />
                     <blockquote className="card-blockquote">
@@ -180,11 +266,11 @@ class Landing extends React.Component {
                         />
                       </svg>
                       <h4 className="display-3 font-weight-bold text-white">
-                        Legaloa.
+                        LEGALOA.
                       </h4>
-                      <p className="lead text-italic text-white">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Aliquam pellentesque id diam at porttitor.
+                      <p className="lead text-italic text-white" align="justify">
+                        Votre temps est précieux. Gagnez un temps fou
+                        dans vos recherches.
                       </p>
                     </blockquote>
                   </Card>
@@ -195,15 +281,15 @@ class Landing extends React.Component {
                       <i className="ni ni-settings" />
                     </div>
                     <h3>Avoir l'information juridique à portée de mains.</h3>
-                    <p className="lead">
+                    <p align="justify">
                       Grace à son moteur de recherche, Legaloa vous permet de retrouver rapidement le contenu de n'importe quel texte juridique
                       ainsi que de la jurisprudence en toute simplicité.
                     </p>
-                    <p>
+                    <p align="justify">
                       Plus besoin de se perdre dans les supports papiers, les recherches infructueuses et les déplacements incessantes.
                       Accéder simplement aux décisions de justice de la première instance à la cour de cassation,
                     </p>
-                    <p>
+                    <p align="justify">
                       aux lois, règlements, décrets, circulaires... n'importe où que vous soyez.
                     </p>
                   </div>
@@ -214,15 +300,6 @@ class Landing extends React.Component {
           <section className="section pb-0 bg-gradient-default" id="about">
             <Container>
               <Row className="row-grid align-items-center">
-                <Col className="order-lg-2 ml-lg-auto" md="6">
-                  <div className="position-relative pl-md-5">
-                    <img
-                      alt="..."
-                      className="img-center img-fluid"
-                      src="https://media.istockphoto.com/photos/cropped-image-of-man-with-coffee-cup-and-doughnut-working-at-table-picture-id1011411270?b=1&k=6&m=1011411270&s=170667a&w=0&h=8joiE9tn7Ko-4XPCsVo_cR3uogkQC0a1jhorph9r3DU="
-                    />
-                  </div>
-                </Col>
                 <Col className="order-lg-1" lg="6">
                   <div className="d-flex px-3">
                     <div>
@@ -231,58 +308,46 @@ class Landing extends React.Component {
                       </div>
                     </div>
                     <div className="pl-4">
-                      <h4 className="display-3 text-white">à-propos</h4>
-                      <p className="text-white">
-                        Grace à son moteur de recherche, Legaloa vous permet de retrouver rapidement
-                        le contenu de n'importe quel texte juridique
-                        ainsi que de la jurisprudence en toute simplicité.
+                      <h4 className="display-3 text-white">À-propos</h4>
+                      <p className="text-white" align="justify">
+                        LEGALOA est une Start up mettant à disposition les règlementations juridiques et la
+                        jurisprudence des pays Ouest-africains de façon digitalisée au bénéfice des
+                        professionnels du droit (Avocats, notaires, huissier de justice…), des entreprises et des
+                        Universitaires.
                       </p>
+                      <p className="text-white" align="justify">
+                        Une plateforme juridique répondant à un réel besoin d’accessibilité des textes
+                        juridiques pour les acteurs situés sur l’espace OHADA tout comme les chercheurs de la
+                        diaspora en France et à l’international.
+                      </p>
+                      <p className="text-white" align="justify">
+                        Nous collectons et numérisons les textes juridiques en vigueurs dans les Etats membres
+                        de l’OHADA en Commençant par le Burkina Faso et les rendons accessibles via un
+                        moteur de recherche puissant utilisant l’intelligence artificielle et compresser ainsi le
+                        temps de recherche.
+                      </p>
+
                     </div>
                   </div>
-                  <Card className="shadow shadow-lg--hover mt-5">
-                    <CardBody>
-                      <div className="d-flex px-3">
-                        <div>
-                          <div className="icon icon-shape bg-gradient-success rounded-circle text-white">
-                            <i className="ni ni-satisfied" />
-                          </div>
-                        </div>
-                        <div className="pl-4">
-                          <h5 className="title text-success">
-                            Support
-                          </h5>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Aliquam pellentesque id diam at porttitor.
-                            Nam quis felis tellus. Phasellus sit amet purus elit.
-                            Sed tincidunt at urna vel hendrerit.
-                          </p>
-                        </div>
-                      </div>
-                    </CardBody>
-                  </Card>
-                  <Card className="shadow shadow-lg--hover mt-5">
-                    <CardBody>
-                      <div className="d-flex px-3">
-                        <div>
-                          <div className="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                            <i className="ni ni-active-40" />
-                          </div>
-                        </div>
-                        <div className="pl-4">
-                          <h5 className="title text-warning">
-                            Functionamment
-                          </h5>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Aliquam pellentesque id diam at porttitor.
-                            Nam quis felis tellus. Phasellus sit amet purus elit.
-                            Sed tincidunt at urna vel hendrerit.
-                          </p>
-                        </div>
-                      </div>
-                    </CardBody>
-                  </Card>
+                </Col>
+                <Col className="order-lg-2 ml-lg-auto" md="6">
+                  <div className="position-relative pl-4">
+                    <img
+                      alt="..."
+                      style={{ maxWidth: "100%" }}
+                      className="img-center img-fluid"
+                      src={img4}
+                    />
+                    <br></br>
+                    <p className="text-white" align="justify">
+                      LEGALOA c’est aussi, un outil de veille juridique pour vous permettre de rester informer
+                      sur l’actualité juridique.
+                    </p>
+                    <p className="text-white" align="justify">
+                      Notre mission est de rendre le droit ouest-africain transparent pour tous les acteurs
+                      aussi bien au plan national qu’international.
+                    </p>
+                  </div>
                 </Col>
               </Row>
             </Container>
@@ -309,8 +374,7 @@ class Landing extends React.Component {
                 <Col lg="8">
                   <h2 className="display-3">Notre équipe </h2>
                   <p className="lead text-muted">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam pellentesque id diam at porttitor. .
+                    Équipe de jeunes entrepreneurs
                   </p>
                 </Col>
               </Row>
@@ -495,7 +559,7 @@ class Landing extends React.Component {
                 <Col lg="10">
                   <h2 className="display-3 text-white">Tarifs</h2>
                   <p className="lead text-white">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pellentesque id diam at porttitor. .
+                    Nous vous proposons des tarifs adaptés et personnalisés selon votre profils .
                   </p>
                 </Col>
               </Row>
@@ -509,30 +573,26 @@ class Landing extends React.Component {
                             <i className="ni ni-check-bold" />
                           </div>
                           <h6 className="text-primary text-uppercase">
-                            Avocat individuel
+                            Avocat/Cabinet
+                            d’avocat
                           </h6>
                           <p className="description mt-3">
-                            ...000 F CFA/MOIS
+                            Offre personnalisée
                           </p>
-                          <div>
-                            <Badge color="primary" pill className="mr-1">
-                              design
-                            </Badge>
-                            <Badge color="primary" pill className="mr-1">
-                              system
-                            </Badge>
-                            <Badge color="primary" pill className="mr-1">
-                              creative
-                            </Badge>
-                          </div>
-                          <Button
-                            className="mt-4"
-                            color="primary"
-                            href="#pablo"
-                            onClick={e => e.preventDefault()}
-                          >
-                            Abonnement
-                          </Button>
+                          <Link className="nav-link"
+                            href=""
+                            onClick={this.handleScroll}
+                            to="contact"
+                            spy={true}
+                            smooth={true}>
+                            <Button
+                              className="mt-4"
+                              color="primary"
+                              href=""
+                            >
+                              Nous contacter
+                            </Button>
+                          </Link >
                         </CardBody>
                       </Card>
                     </Col>
@@ -540,33 +600,30 @@ class Landing extends React.Component {
                       <Card className="card-lift--hover shadow border-0">
                         <CardBody className="py-5">
                           <div className="icon icon-shape icon-shape-success rounded-circle mb-4">
-                            <i className="ni ni-istanbul" />
+                            <i className="ni ni-check-bold" />
                           </div>
                           <h6 className="text-success text-uppercase">
-                            Cabinet d'avocats
+                            Entreprises et autres
+                            professions
                           </h6>
                           <p className="description mt-3">
-                            OFFRE PERSONNALISÉE
+                            Offre personnalisée
                           </p>
-                          <div>
-                            <Badge color="success" pill className="mr-1">
-                              business
-                            </Badge>
-                            <Badge color="success" pill className="mr-1">
-                              vision
-                            </Badge>
-                            <Badge color="success" pill className="mr-1">
-                              success
-                            </Badge>
-                          </div>
-                          <Button
-                            className="mt-4"
-                            color="success"
-                            href="#pablo"
-                            onClick={e => e.preventDefault()}
-                          >
-                            Nous contacter
-                          </Button>
+
+                          <Link className="nav-link"
+                            href=""
+                            onClick={this.handleScroll}
+                            to="contact"
+                            spy={true}
+                            smooth={true}>
+                            <Button
+                              className="mt-4"
+                              color="success"
+                              href=""
+                            >
+                              Nous contacter
+                            </Button>
+                          </Link >
                         </CardBody>
                       </Card>
                     </Col>
@@ -574,33 +631,29 @@ class Landing extends React.Component {
                       <Card className="card-lift--hover shadow border-0">
                         <CardBody className="py-5">
                           <div className="icon icon-shape icon-shape-warning rounded-circle mb-4">
-                            <i className="ni ni-planet" />
+                            <i className="ni ni-check-bold" />
                           </div>
                           <h6 className="text-warning text-uppercase">
-                            Entreprise
+                            Offre étudiante
                           </h6>
                           <p className="description mt-3">
-                            OFFRE PERSONNALISÉE
+                            Offre adaptée
                           </p>
-                          <div>
-                            <Badge color="warning" pill className="mr-1">
-                              marketing
-                            </Badge>
-                            <Badge color="warning" pill className="mr-1">
-                              product
-                            </Badge>
-                            <Badge color="warning" pill className="mr-1">
-                              launch
-                            </Badge>
-                          </div>
-                          <Button
-                            className="mt-4"
-                            color="warning"
-                            href="#pablo"
-                            onClick={e => e.preventDefault()}
-                          >
-                            Nous contacter
-                          </Button>
+                          <Link className="nav-link"
+                            href=""
+                            onClick={this.handleScroll}
+                            to="contact"
+                            spy={true}
+                            smooth={true}>
+                            <Button
+                              className="mt-4"
+                              color="warning"
+                              href=""
+                            >
+                              Nous contacter
+                            </Button>
+                          </Link >
+
                         </CardBody>
                       </Card>
                     </Col>
@@ -647,81 +700,186 @@ class Landing extends React.Component {
               <Row className="justify-content-center text-center mb-lg">
                 <Col lg="8">
                   <h2 className="display-3">Nous contacter </h2>
-                  <p className="lead text-muted">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam pellentesque id diam at porttitor. .
-                  </p>
                 </Col>
               </Row>
               <Row className="justify-content-center mt--30" >
-                <Col lg="8">
-                  <Card className="bg-gradient-secondary shadow">
-                    <CardBody className="p-lg-5">
-                      <h4 className="mb-1">Vous avez des questions?</h4>
-                      <p className="mt-0">
-                        Ton avie...
-                      </p>
-                      <FormGroup
-                        className={classnames("mt-5", {
-                          focused: this.state.nameFocused
-                        })}
-                      >
-                        <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-user-run" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input
-                            placeholder="Your name"
-                            type="text"
-                            onFocus={e => this.setState({ nameFocused: true })}
-                            onBlur={e => this.setState({ nameFocused: false })}
-                          />
-                        </InputGroup>
-                      </FormGroup>
-                      <FormGroup
-                        className={classnames({
-                          focused: this.state.emailFocused
-                        })}
-                      >
-                        <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-email-83" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input
-                            placeholder="Email address"
-                            type="email"
-                            onFocus={e => this.setState({ emailFocused: true })}
-                            onBlur={e => this.setState({ emailFocused: false })}
-                          />
-                        </InputGroup>
-                      </FormGroup>
-                      <FormGroup className="mb-4">
-                        <Input
-                          className="form-control-alternative"
-                          cols="80"
-                          name="name"
-                          placeholder="Type a message..."
-                          rows="4"
-                          type="textarea"
+                <Col lg="6">
+                  <h6 className="display-4 text-black">
+                    Grace à votre abonnement, bénéficiez:
+                  </h6>
+                  <ul className="text-black">
+                    <li>Accès au moteur de recherche, recherche
+                      avancée grâce aux filtres et consultation de la
+                      base documentaire</li>
+                    <li>Espace personnel</li>
+                    <li>Veille jurisprudentielle et actualités juridiques</li>
+                    <li>Ajout de vos décisions à LEGALOA</li>
+                    <li>Assistance personnalisée</li>
+                    <li>Espace personnel</li>
+                  </ul>
+                </Col>
+                <Col lg="6">
+                    <Card className="bg-gradient-secondary shadow">
+                      <CardBody className="p-lg-5">
+                        <h4 className="display-6 text-black">Puisque votre temps est précieux, rejoignez-nous !</h4>
+                        <p className="mt-0">
+                          Entrée en contact avec l’un de nos experts
+                        </p>
+                        <Form onSubmit={this.sendEmail}
+                    ref={c => {
+                      this.form = c;
+                    }}>
+                        <Row>
+                          <Col md="6">
+                            <FormGroup>
+                              <InputGroup>
+                                <Input type="text"
+                                  placeholder="Nom de la structure"
+                                  className="form-control"
+                                  validations={[required]}
+                                  name="entreprise" />
+                              </InputGroup>
+                            </FormGroup>
+                          </Col>
+                          <Col md="6">
+                            <FormGroup>
+                              <InputGroup>
+                                <Input type="number"
+                                  placeholder="Nunéro d'utilisateurs"
+                                  className="form-control"
+                                  validations={[required]}
+                                  name="nomUtilisateurs" />
+                              </InputGroup>
+                            </FormGroup>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col md="6">
+                            <FormGroup>
+                              <InputGroup>
+                                <Input type="text"
+                                  placeholder="Nom"
+                                  className="form-control"
+                                  validations={[required]}
+                                  name="nom" />
+                              </InputGroup>
+                            </FormGroup>
+                          </Col>
+                          <Col md="6">
+                            <FormGroup>
+                              <InputGroup>
+                                <Input type="text"
+                                  placeholder="Prenom"
+                                  className="form-control"
+                                  validations={[required]}
+                                  name="prenom" />
+                              </InputGroup>
+                            </FormGroup>
+                          </Col>
+                        </Row>
+
+                        <Row>
+                          <Col md="6">
+                            <FormGroup>
+                              <InputGroup>
+                                <Input type="text"
+                                  placeholder="Profession"
+                                  className="form-control"
+                                  validations={[required]}
+                                  name="profession" />
+                              </InputGroup>
+                            </FormGroup>
+                          </Col>
+                          <Col md="6">
+                            <FormGroup>
+                              <InputGroup>
+                                <Input type="text"
+                                  placeholder="Pays"
+                                  className="form-control"
+                                  validations={[required]}
+                                  name="pays" />
+                              </InputGroup>
+                            </FormGroup>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col md="6">
+                            <FormGroup>
+                              <InputGroup>
+                                <Input type="text"
+                                  placeholder="Téléphone"
+                                  className="form-control"
+                                  validations={[required]}
+                                  name="telephone" />
+                              </InputGroup>
+                            </FormGroup>
+                          </Col>
+                          <Col md="6">
+                                  <FormGroup>
+                                    <InputGroup>
+                                      <Input type="text"
+                                        placeholder="Addresse e-mail"
+                                        className="form-control"
+                                        name="email"
+                                        validations={[required, email]} />
+                                    </InputGroup>
+                                  </FormGroup>
+                                </Col>
+                        </Row>
+                        
+                        <Row>
+                          <Col md="12">
+                            <FormGroup>
+                              <Textarea
+                              type="text"
+                                cols="45"
+                                name="message"
+                                placeholder="Autres commentaires..."
+                                rows="4"
+                                validations={[required]}
+                              />
+                            </FormGroup>
+                          </Col>
+                        </Row>
+                        <div>
+                        <div className="form-group">
+                          <button
+                            className="btn btn-default btn-block"
+                            type="submit"
+                            disabled={this.state.loading}
+                          >
+                            {this.state.loading && (
+                              <span className="spinner-border spinner-border-sm"></span>
+                            )}
+                            <span className="spam_title">ENVOYEZ</span>
+                          </button>
+                        </div>
+                        {this.state.message && (
+                          <div className="form-group">
+                          <div
+                            className={
+                              this.state.successful
+                                ? "alert alert-success"
+                                : "alert alert-danger"
+                            }
+                            role="alert"
+                          >
+                            {this.state.message}
+                          </div>
+                        </div>
+                        )}
+                        <CheckButton
+                          style={{ display: "none" }}
+                          ref={c => {
+                            this.checkBtn = c;
+                          }}
                         />
-                      </FormGroup>
-                      <div>
-                        <Button
-                          block
-                          className="btn-round"
-                          color="default"
-                          size="lg"
-                          type="button"
-                        >
-                          Send Message
-                        </Button>
-                      </div>
-                    </CardBody>
-                  </Card>
+                        </div>
+                        </Form>
+                      </CardBody>
+                    </Card>
+
+
                 </Col>
               </Row>
             </Container>

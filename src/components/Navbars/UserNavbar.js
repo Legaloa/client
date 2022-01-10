@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Logo from "assets/img/brand/Logo.png";
+import { useHistory } from "react-router-dom";
 
 import AuthService from "../../services/auth.service";
+import UserService from "../../services/user.service";
 // reactstrap components
 import {
   UncontrolledCollapse,
@@ -14,6 +17,7 @@ import {
   Col
 } from "reactstrap";
 
+const user = AuthService.getCurrentUser();
 class UserNavbar extends React.Component {
   constructor(props) {
     super(props);
@@ -22,10 +26,15 @@ class UserNavbar extends React.Component {
       showAdminBoard: false,
       currentUser: undefined,
     };
+    const user = AuthService.getCurrentUser();
+    if (!user) {
+      return this.props.history.push('/login');
+    }
   }
 
   componentDidMount() {
-    const user = AuthService.getCurrentUser();
+    this.retrieveUserInformation()
+
     if (user) {
       this.setState({
         currentUser: user,
@@ -33,6 +42,35 @@ class UserNavbar extends React.Component {
         showAdminBoard: user.roles.includes("ROLE_ADMIN"),
       });
     }
+  }
+
+  retrieveUserInformation() {
+    console.log("retriveInformation");
+    const user = AuthService.getCurrentUser();
+    UserService.findByUsername(user.username)
+      .then(response => {
+        this.setState({
+          currentUser: response.data[0]
+        });
+        var dateToday = new Date(Date.now());
+        var dateCreation = new Date(this.state.currentUser.createdAt);
+        var dateLimit = new Date(this.state.currentUser.createdAt);
+        dateLimit.setDate(dateCreation.getDate() + 7);
+
+        if (dateToday > dateLimit) {
+          console.log("Test gratuit finalisée");
+          AuthService.update(this.state.currentUser.username, 2);
+        } else {
+          console.log("Vous avez encore le tems");
+          AuthService.update(this.state.currentUser.username, 1);
+        }
+        console.log("Today: " + dateToday);
+        console.log("Limit: " + dateLimit);
+        console.log("Creation: " + dateCreation);
+      })
+      .catch(e => {
+        console.log(e);
+      });
   }
 
   logOut() {
@@ -43,78 +81,81 @@ class UserNavbar extends React.Component {
     const { currentUser, showAdminBoard } = this.state;
     console.log(currentUser);
 
-    
     return (
 
-        <Navbar
-          className="navbar-horizontal navbar-dark bg-default"
-          expand="lg"
-        >
-          <Container>
-            <NavbarBrand  to="/home" tag={Link}>
-              Legaloa
-            </NavbarBrand>
-            <button
-              aria-controls="navbar-primary"
-              aria-expanded={false}
-              aria-label="Toggle navigation"
-              className="navbar-toggler"
-              data-target="#navbar-primary"
-              data-toggle="collapse"
-              id="navbar-primary"
-              type="button"
-            >
-              <span className="navbar-toggler-icon" />
-            </button>
-            <UncontrolledCollapse navbar toggler="#navbar-primary">
-              <div className="navbar-collapse-header">
-                <Row>
-                  <Col className="collapse-brand" xs="6">
-                    <Link to="/">
-                      <img
-                        alt="..."
-                        src={require("assets/img/brand/blue.png")}
-                      />
-                    </Link>
-                  </Col>
-                  <Col className="collapse-close" xs="6">
-                    <button
-                      aria-controls="navbar-primary"
-                      aria-expanded={false}
-                      aria-label="Toggle navigation"
-                      className="navbar-toggler"
-                      data-target="#navbar-primary"
-                      data-toggle="collapse"
-                      id="navbar-primary"
-                      type="button"
-                    >
-                      <span />
-                      <span />
-                    </button>
-                  </Col>
-                </Row>
-              </div>
-              <Nav className="ml-lg-auto" navbar>
+      <Navbar
+        className="navbar-main navbar-transparent navbar-light headroom"
+        expand="lg"
+        id="navbar-main"
+      >
+        <Container>
+          <NavbarBrand className="mr-lg-5" to="/" tag={Link}>
+            <img
+              alt="..."
+              src={Logo}
+            />Legaloa
+          </NavbarBrand>
+          <button
+            aria-controls="navbar-primary"
+            aria-expanded={false}
+            aria-label="Toggle navigation"
+            className="navbar-toggler"
+            data-target="#navbar-primary"
+            data-toggle="collapse"
+            id="navbar-primary"
+            type="button"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
+          <UncontrolledCollapse navbar toggler="#navbar-primary">
+            <div className="navbar-collapse-header">
+              <Row>
+                <Col className="collapse-brand" xs="6">
+                  <Link to="/">
+                    <img
+                      alt="..."
+                      src={Logo}
+                    />
+                  </Link>
+                </Col>
+                <Col className="collapse-close" xs="6">
+                  <button
+                    aria-controls="navbar-primary"
+                    aria-expanded={false}
+                    aria-label="Toggle navigation"
+                    className="navbar-toggler"
+                    data-target="#navbar-primary"
+                    data-toggle="collapse"
+                    id="navbar-primary"
+                    type="button"
+                  >
+                    <span />
+                    <span />
+                  </button>
+                </Col>
+              </Row>
+            </div>
+            <Nav className="ml-lg-auto" navbar>
               {showAdminBoard && (
-                 <div className="navbar-nav ml-auto">
+                <div className="navbar-nav ml-auto">
                   <NavLink href="/document-page" to={"/document-page"} className="nav-link">
-                    Ajouter documents 
+                    Ajouter documents
                   </NavLink>
                   <NavLink href="/article-page" to={"/article-page"} className="nav-link">
-                    Ajouter articles 
+                    Ajouter articles
                   </NavLink>
-                  </div>
-                  
+                </div>
+
               )}
               {currentUser ? (
-                  <div className="navbar-nav ml-auto">     
-                      <NavLink href="board-search" to={"/board-search"} className="nav-link">
-                        Chercher
-                      </NavLink>
-                      <NavLink href="profile-page" to={"/profile-page"} className="nav-link">
-                        {currentUser.username}
-                      </NavLink>
-                      <NavLink
+                <div className="navbar-nav ml-auto">
+                  <NavLink href="board-search" to={"/board-search"} className="nav-link">
+                    Chercher
+                  </NavLink>
+                  <NavLink href="profile-page" to={"/profile-page"} className="nav-link">
+                    {currentUser.username}
+                  </NavLink>
+                  <NavLink
                     aria-expanded={false}
                     aria-haspopup={true}
                     data-toggle="dropdown"
@@ -125,19 +166,19 @@ class UserNavbar extends React.Component {
                   >
                     LogOut
                   </NavLink>
-                  </div>
-                ): (
-                  <div className="navbar-nav ml-auto">
-                    <NavLink href="login-page">
-                      Connexion
-                    </NavLink>
-                  </div>
-                )}
-                
-              </Nav>
-            </UncontrolledCollapse>
-          </Container>
-        </Navbar>
+                </div>
+              ) : (
+                <div className="navbar-nav ml-auto">
+                  <NavLink href="login-page">
+                    Connexion
+                  </NavLink>
+                </div>
+              )}
+
+            </Nav>
+          </UncontrolledCollapse>
+        </Container>
+      </Navbar>
     );
   }
 }

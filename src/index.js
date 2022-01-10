@@ -11,6 +11,7 @@ import Login from "views/legalData/Login.js";
 import Profile from "views/legalData/Profile.js";
 import Register from "views/legalData/Register.js";
 import BoardSearch from "views/legalData/Board-search";
+//import BoardSearch from "views/legalData/Search";
 
 
 import BoardAdmin from "views/legalData/admin/Board-admin";
