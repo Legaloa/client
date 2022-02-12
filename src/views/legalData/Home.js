@@ -830,7 +830,7 @@ class Landing extends React.Component {
                         <Row>
                           <Col md="12">
                             <FormGroup>
-                              <Textarea
+                              <Input
                               type="text"
                                 cols="45"
                                 name="message"

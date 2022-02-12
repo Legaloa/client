@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "assets/img/brand/Logo.png";
-import { useHistory } from "react-router-dom";
 
 import AuthService from "../../services/auth.service";
 import UserService from "../../services/user.service";
