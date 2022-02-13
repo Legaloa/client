@@ -306,7 +306,6 @@ class Register extends React.Component {
                     <li>Recherche avancée grâce aux filtres et consultation de
                       la base documentaire</li>
                     <li>Veille jurisprudentielle et actualités juridiques</li>
-                    <li>Accès au moteur de recherche</li>
                   </ul>
                 </Col>
 
@@ -335,7 +334,7 @@ class Register extends React.Component {
                                 </Col>
                                 <Col md="6">
                                   <FormGroup>
-                                    <InputGroup>
+                                    <InputGroup > 
                                       <Input type="DATE"
                                         placeholder="Date de naissance"
                                         className="form-control"
@@ -349,10 +348,10 @@ class Register extends React.Component {
                               </Row>
                               <Row>
                               <Col md="6">
-                                  <FormGroup>
+                                  <FormGroup >
                                     <InputGroup>
                                       <Input type="text"
-                                        placeholder="Prenom"
+                                        placeholder="Prénom"
                                         className="form-control"
                                         name="prenom"
                                         value={this.state.prenom}

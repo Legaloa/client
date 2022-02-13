@@ -2,7 +2,7 @@ import http from "../http-common";
 
 class DocumentDataService {
   getAll(title, type, organisme, domaine, date) {
-    return http.get(`/document?intituleArticle=${title}&typeId=${type}&organismeId=${organisme}&domaineId=${domaine}&dateVigueur=${date}`);
+    return http.get(`/document?intituleDoc=${title}&typeId=${type}&organismeId=${organisme}&domaineId=${domaine}&dateVigueur=${date}`);
   }
 
   getAllDocs() {

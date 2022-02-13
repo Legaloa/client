@@ -28,9 +28,8 @@ import {
   InputGroup,
   Spinner
 } from "reactstrap";
-import { parseTwoDigitYear } from "moment";
 
-const user = AuthService.getCurrentUser();
+
 export default class BoardSearch extends Component {
   constructor(props) {
     super(props);
@@ -146,6 +145,7 @@ export default class BoardSearch extends Component {
 
   onChangeSearchDate(e) {
     const searchDate = e;
+    
     this.setState({
       searchDate: searchDate
     });
@@ -469,7 +469,7 @@ export default class BoardSearch extends Component {
                   <ReactDatetime
                     id="idDate"
                     inputProps={{
-                      placeholder: "Date Picker Here"
+                      placeholder: "Choisir anée"
                     }}
                     value={this.state.searchDate}
                     dateFormat="YYYY" timeFormat={false}

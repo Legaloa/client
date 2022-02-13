@@ -6,9 +6,9 @@ import img2 from "assets/img/brand/BigData.png";
 import img3 from "assets/img/brand/Acces.png";
 import img4 from "assets/img/brand/Apropos.png";
 import emailjs from 'emailjs-com';
+import "./Home.css";
 
 import  Input from "react-validation/build/input";
-import Textarea from 'react-validation/build/textarea';
 import { isEmail } from "validator";
 import Form from "react-validation/build/form";
 
@@ -144,12 +144,12 @@ class Landing extends React.Component {
                 <div className="col px-0" >
                   <Row>
                     <Col lg="6">
-                      <h2 className="display-3 text-black">
+                      <h2 className="display-3 text-black" >
                         VOTRE PLATEFORME JURIDIQUE 100% digitalisée {" "}
-                        <span>Simple - Rapide - Efficace</span>
+                        <span style={{"font-weight": "bold"}}>Simple - Rapide - Efficace</span>
                       </h2>
 
-                      <p className="text-black" align="justify">
+                      <p className="text-black" align="justify" style={{"font-weight": "bolder"}} >
                         LEGALOA, la LegalTech dédiée aux professionnels du droit de l’espace
                         OHADA et aux chercheurs de la diaspora africaine en France et
                         d’ailleurs. C’est une plateforme juridique utilisant l’intelligence
@@ -287,10 +287,7 @@ class Landing extends React.Component {
                     </p>
                     <p align="justify">
                       Plus besoin de se perdre dans les supports papiers, les recherches infructueuses et les déplacements incessantes.
-                      Accéder simplement aux décisions de justice de la première instance à la cour de cassation,
-                    </p>
-                    <p align="justify">
-                      aux lois, règlements, décrets, circulaires... n'importe où que vous soyez.
+                      Accéder simplement aux décisions de justice de la première instance à la cour de cassation,  aux lois, règlements, décrets, circulaires... n'importe où que vous soyez.
                     </p>
                   </div>
                 </Col>
@@ -310,15 +307,9 @@ class Landing extends React.Component {
                     <div className="pl-4">
                       <h4 className="display-3 text-white">À-propos</h4>
                       <p className="text-white" align="justify">
-                        LEGALOA est une Start up mettant à disposition les règlementations juridiques et la
-                        jurisprudence des pays Ouest-africains de façon digitalisée au bénéfice des
-                        professionnels du droit (Avocats, notaires, huissier de justice…), des entreprises et des
-                        Universitaires.
-                      </p>
-                      <p className="text-white" align="justify">
-                        Une plateforme juridique répondant à un réel besoin d’accessibilité des textes
-                        juridiques pour les acteurs situés sur l’espace OHADA tout comme les chercheurs de la
-                        diaspora en France et à l’international.
+                      LEGALOA est une plateforme qui rassemble et met à la disposition des hommes de lois 
+                      (Avocats, Services juridiques des entreprises, universitaires...),
+                      les textes juridiques et jurisprudences spécifiques aux pays d’Afrique del’Ouest, quelque soit la juridiction.
                       </p>
                       <p className="text-white" align="justify">
                         Nous collectons et numérisons les textes juridiques en vigueurs dans les Etats membres
@@ -326,20 +317,7 @@ class Landing extends React.Component {
                         moteur de recherche puissant utilisant l’intelligence artificielle et compresser ainsi le
                         temps de recherche.
                       </p>
-
-                    </div>
-                  </div>
-                </Col>
-                <Col className="order-lg-2 ml-lg-auto" md="6">
-                  <div className="position-relative pl-4">
-                    <img
-                      alt="..."
-                      style={{ maxWidth: "100%" }}
-                      className="img-center img-fluid"
-                      src={img4}
-                    />
-                    <br></br>
-                    <p className="text-white" align="justify">
+                      <p className="text-white" align="justify">
                       LEGALOA c’est aussi, un outil de veille juridique pour vous permettre de rester informer
                       sur l’actualité juridique.
                     </p>
@@ -347,6 +325,18 @@ class Landing extends React.Component {
                       Notre mission est de rendre le droit ouest-africain transparent pour tous les acteurs
                       aussi bien au plan national qu’international.
                     </p>
+                    </div>
+                  </div>
+                </Col>
+                <Col className="order-lg-2 ml-lg-auto" md="6">
+                  <div className="position-relative pl-4">
+                    <img
+                      alt="..."
+                      style={{ maxWidth: "100%", maxHeight: "100%" }}
+                      className="img-center img-fluid"
+                      src={img4}
+                    />
+                    <br></br>
                   </div>
                 </Col>
               </Row>
@@ -374,54 +364,51 @@ class Landing extends React.Component {
                 <Col lg="8">
                   <h2 className="display-3">Notre équipe </h2>
                   <p className="lead text-muted">
-                    Équipe de jeunes entrepreneurs
+                   Une équipe dynamique pour vous satisfaire
                   </p>
                 </Col>
               </Row>
               <Row>
-                <Col className="mb-5 mb-lg-0" lg="3" md="6">
+                <Col className="mb-5 mb-lg-0" lg="6" md="6">
                   <div className="px-4">
                     <img
                       alt="..."
                       className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                      src="https://lh5.googleusercontent.com/proxy/PigxOVqG50fy57LwMQ2bBdvp09o93GgNLwLYLxUsW-9IW7MEkeJySNjZX_ikleNQalqnso0L8RJ3212xKWdkhAiuMmCvFQCkIkFyUT9kaTwlJyg=s0-d"
+                      src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.6435-9/205611501_4138286209585599_7730833340706338022_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=Yf-pCBmrIoEAX8sWhvP&tn=5U11Ihbp5_PWQS_J&_nc_ht=scontent-cdg2-1.xx&oh=00_AT_CrBvOfDSFQlrorOk1bVSgKOZ5rra8MCXlg2t_Pg5Hag&oe=622F8230"
                       style={{ width: "200px" }}
                     />
                     <div className="pt-4 text-center">
                       <h5 className="title">
                         <span className="d-block mb-1">Sadam</span>
-                        <small className="h6 text-muted">Poste</small>
+                        <small className="h6 text-muted">CEO</small>
                       </h5>
                       <div className="mt-3">
                         <Button
                           className="btn-icon-only rounded-circle"
                           color="warning"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
+                          href="https://twitter.com/SadamSiby?t=lC-FzQu1_JxjraroEcJWlw&s=08"
                         >
                           <i className="fa fa-twitter" />
                         </Button>
                         <Button
                           className="btn-icon-only rounded-circle ml-1"
                           color="warning"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
+                          href="https://www.facebook.com/sadam.Siby"
                         >
                           <i className="fa fa-facebook" />
                         </Button>
                         <Button
                           className="btn-icon-only rounded-circle ml-1"
                           color="warning"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
+                          href="https://www.linkedin.com/in/sadam-siby-43134b123/"
                         >
-                          <i className="fa fa-dribbble" />
+                          <i className="fa fa-linkedin" />
                         </Button>
                       </div>
                     </div>
                   </div>
                 </Col>
-                <Col className="mb-5 mb-lg-0" lg="3" md="6">
+                <Col className="mb-5 mb-lg-0" lg="6" md="6">
                   <div className="px-4">
                     <img
                       alt="..."
@@ -433,117 +420,30 @@ class Landing extends React.Component {
                       <h5 className="title">
                         <span className="d-block mb-1">Dante</span>
                         <small className="h6 text-muted">
-                          Poste
+                          Developpeur Web
                         </small>
                       </h5>
                       <div className="mt-3">
                         <Button
                           className="btn-icon-only rounded-circle"
                           color="primary"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
+                          href=""
                         >
                           <i className="fa fa-twitter" />
                         </Button>
                         <Button
                           className="btn-icon-only rounded-circle ml-1"
                           color="primary"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
+                          href=""
                         >
                           <i className="fa fa-facebook" />
                         </Button>
                         <Button
                           className="btn-icon-only rounded-circle ml-1"
                           color="primary"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
+                          href=""
                         >
-                          <i className="fa fa-dribbble" />
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-                <Col className="mb-5 mb-lg-0" lg="3" md="6">
-                  <div className="px-4">
-                    <img
-                      alt="..."
-                      className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-YUH7CCz_7w8amU_UIKuObVvNPcfoQ7k5DptKguq3Ih86Gtxq-K9ztm72QcTggXkjpbs&usqp=CAU"
-                      style={{ width: "200px" }}
-                    />
-                    <div className="pt-4 text-center">
-                      <h5 className="title">
-                        <span className="d-block mb-1">Prenom</span>
-                        <small className="h6 text-muted">Poste</small>
-                      </h5>
-                      <div className="mt-3">
-                        <Button
-                          className="btn-icon-only rounded-circle"
-                          color="info"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-twitter" />
-                        </Button>
-                        <Button
-                          className="btn-icon-only rounded-circle ml-1"
-                          color="info"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-facebook" />
-                        </Button>
-                        <Button
-                          className="btn-icon-only rounded-circle ml-1"
-                          color="info"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-dribbble" />
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-                <Col className="mb-5 mb-lg-0" lg="3" md="6">
-                  <div className="px-4">
-                    <img
-                      alt="..."
-                      className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjX3SOTIfrK1Kt1czaejkmTg6i93_WjzivjdnJPNLO2dttISoDQ3KrFEzrOhCTelV00mY&usqp=CAU"
-                      style={{ width: "200px" }}
-                    />
-                    <div className="pt-4 text-center">
-                      <h5 className="title">
-                        <span className="d-block mb-1">Prenom</span>
-                        <small className="h6 text-muted">Poste</small>
-                      </h5>
-                      <div className="mt-3">
-                        <Button
-                          className="btn-icon-only rounded-circle"
-                          color="success"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-twitter" />
-                        </Button>
-                        <Button
-                          className="btn-icon-only rounded-circle ml-1"
-                          color="success"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-facebook" />
-                        </Button>
-                        <Button
-                          className="btn-icon-only rounded-circle ml-1"
-                          color="success"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-dribbble" />
+                          <i className="fa fa-linkedin" />
                         </Button>
                       </div>
                     </div>
@@ -715,7 +615,6 @@ class Landing extends React.Component {
                     <li>Veille jurisprudentielle et actualités juridiques</li>
                     <li>Ajout de vos décisions à LEGALOA</li>
                     <li>Assistance personnalisée</li>
-                    <li>Espace personnel</li>
                   </ul>
                 </Col>
                 <Col lg="6">
@@ -745,7 +644,7 @@ class Landing extends React.Component {
                             <FormGroup>
                               <InputGroup>
                                 <Input type="number"
-                                  placeholder="Nunéro d'utilisateurs"
+                                  placeholder="Nombre d'utilisateurs"
                                   className="form-control"
                                   validations={[required]}
                                   name="nomUtilisateurs" />
@@ -769,7 +668,7 @@ class Landing extends React.Component {
                             <FormGroup>
                               <InputGroup>
                                 <Input type="text"
-                                  placeholder="Prenom"
+                                  placeholder="Prénom"
                                   className="form-control"
                                   validations={[required]}
                                   name="prenom" />
@@ -830,14 +729,19 @@ class Landing extends React.Component {
                         <Row>
                           <Col md="12">
                             <FormGroup>
-                              <Input
+                            <InputGroup>
+                              <textarea 
+                              style={{height: "200px"}}
+      
                               type="text"
                                 cols="45"
                                 name="message"
-                                placeholder="Autres commentaires..."
-                                rows="4"
+                                placeholder="Autres commentaires.."
+                                className="form-control"
+                                rows="12"
                                 validations={[required]}
                               />
+                              </InputGroup>
                             </FormGroup>
                           </Col>
                         </Row>

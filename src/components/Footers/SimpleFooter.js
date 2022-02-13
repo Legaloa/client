@@ -1,4 +1,3 @@
-
 /*eslint-disable*/
 import React from "react";
 // reactstrap components
@@ -10,7 +9,7 @@ import {
   Container,
   Row,
   Col,
-  UncontrolledTooltip
+  UncontrolledTooltip,
 } from "reactstrap";
 
 class SimpleFooter extends React.Component {
@@ -20,19 +19,12 @@ class SimpleFooter extends React.Component {
         <footer className=" footer">
           <Container>
             <Row className=" row-grid align-items-center mb-5">
-              <Col lg="6">
-                <h3 className=" text-primary font-weight-light mb-2">
-                  Merci de nous soutenir !
-                </h3>
-                <h4 className=" mb-0 font-weight-light">
-                  Restons en contact
-                </h4>
-              </Col>
+              <Col lg="6"></Col>
               <Col className="text-lg-center btn-wrapper" lg="6">
                 <Button
                   className="btn-icon-only rounded-circle"
                   color="twitter"
-                  href="https://twitter.com/"
+                  href="https://twitter.com/SadamSiby?t=lC-FzQu1_JxjraroEcJWlw&s=08"
                   id="tooltip475038074"
                   target="_blank"
                 >
@@ -46,7 +38,7 @@ class SimpleFooter extends React.Component {
                 <Button
                   className="btn-icon-only rounded-circle ml-1"
                   color="facebook"
-                  href="https://www.facebook.com/"
+                  href="https://www.facebook.com/sadam.Siby"
                   id="tooltip837440414"
                   target="_blank"
                 >
@@ -60,16 +52,16 @@ class SimpleFooter extends React.Component {
                 <Button
                   className="btn-icon-only rounded-circle ml-1"
                   color="github"
-                  href="https://github.com/"
+                  href="https://www.linkedin.com/in/sadam-siby-43134b123/"
                   id="tooltip495507257"
                   target="_blank"
                 >
                   <span className="btn-inner--icon">
-                    <i className="fa fa-github" />
+                    <i className="fa fa-linkedin" />
                   </span>
                 </Button>
                 <UncontrolledTooltip delay={0} target="tooltip495507257">
-                  Star on Github
+                  linkedin
                 </UncontrolledTooltip>
               </Col>
             </Row>
@@ -78,22 +70,16 @@ class SimpleFooter extends React.Component {
               <Col md="6">
                 <div className=" copyright">
                   © {new Date().getFullYear()}{" "}
-                  <a
-                    href="/"
-                    target="_blank"
-                  >
+                  <a href="/" target="_blank">
                     Legaloa
                   </a>
                   .
                 </div>
               </Col>
-              <Col md="6">
+              <Col md="12">
                 <Nav className=" nav-footer justify-content-end">
                   <NavItem>
-                    <NavLink
-                      href="/"
-                      target="_blank"
-                    >
+                    <NavLink href="/" target="_blank">
                       Legaloa
                     </NavLink>
                   </NavItem>
@@ -105,6 +91,28 @@ class SimpleFooter extends React.Component {
                       À propos de nous
                     </NavLink>
                   </NavItem>
+                  <NavItem>                  <NavLink
+                    href="https://www.doctrine.fr/cgu?source=footer_static"
+                    target="_blank"
+                  >
+                    CGU
+                  </NavLink></NavItem>
+                  <NavItem>                  <NavLink
+                    href="https://www.doctrine.fr/donnees_personnelles?source=footer_static"
+                    target="_blank"
+                  >
+                    Données personnelles
+                  </NavLink></NavItem>
+                  <NavItem>                  <NavLink
+                    href="https://www.doctrine.fr/cookies"
+                    target="_blank"
+                  >
+                    Politique de Cookies
+                  </NavLink></NavItem>
+
+
+
+
                 </Nav>
               </Col>
             </Row>
