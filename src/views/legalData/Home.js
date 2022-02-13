@@ -145,7 +145,7 @@ class Landing extends React.Component {
                   <Row>
                     <Col lg="6">
                       <h2 className="display-3 text-black" >
-                        VOTRE PLATEFORME JURIDIQUE 100% digitalisée {" "}
+                        VOTRE PLATEFORME JURIDIQUE 100% digitalisée! {" "}
                         <span style={{"font-weight": "bold"}}>Simple - Rapide - Efficace</span>
                       </h2>
 
