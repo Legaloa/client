@@ -337,7 +337,7 @@ export default class BoardUser extends Component {
                      if(currentArticle.docId==value.id){
                       return <>
                       <h4 className="card-title" key={index}>{value.intituleDoc}</h4>
-                      <Link to={{pathname: "http://localhost:8080/docs/"+value.route}} target="_blank">
+                      <Link to={{pathname: "https://legaloa-server.herokuapp.com/docs/"+value.route}} target="_blank">
                       <Button key={index} color="primary" type="button">
                       Télécharcher document complet
                       </Button>

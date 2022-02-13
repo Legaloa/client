@@ -562,7 +562,7 @@ export default class Search extends Component {
                                 ))}
                             </label> <br></br>
 
-                            <Link to={{ pathname: "http://localhost:8080/docs/" + currentDocument.route }} target="_blank">
+                            <Link to={{ pathname: "https://legaloa-server.herokuapp.com/docs/" + currentDocument.route }} target="_blank">
                                 <Button color="primary" type="button">
                                     Télécharcher document complet
                                 </Button>
