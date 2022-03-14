@@ -149,7 +149,7 @@ class LegaNavbars extends React.Component {
                         Mon espace
                       </NavLink>
                       <a href="/login" className="nav-link" onClick={this.logOut}>
-                        LogOut
+                        Déconnexion
                       </a>
                   </>
                 ) : (

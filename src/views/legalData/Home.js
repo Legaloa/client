@@ -132,13 +132,7 @@ class Landing extends React.Component {
         <main ref="main">
           <div className="position-relative">
             {/* shape Hero */}
-            <section className="section section-lg section-shaped pb-250" style={{
-              backgroundImage: `url(${img})`,
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              paddingTop: '160px'
-            }}>
+            <section className="bgimg section section-lg section-shaped pb-250" >
 
               <Container className="py-lg-md d-flex">
                 <div className="col px-0" >
@@ -152,11 +146,7 @@ class Landing extends React.Component {
                       <p className="text-black" align="justify" style={{"font-weight": "bolder"}} >
                         LEGALOA, la LegalTech dédiée aux professionnels du droit de l’espace
                         OHADA et aux chercheurs de la diaspora africaine en France et
-                        d’ailleurs. C’est une plateforme juridique utilisant l’intelligence
-                        artificielle pour permettre de retrouver plus facilement et de façon
-                        intuitive le contenu des textes juridiques nationaux (Lois,
-                        règlements, décrets, arrêtés...) et de la jurisprudence des pays
-                        membres de l’OHADA à commencer par le Burkina Faso.
+                        d’ailleurs.
                       </p>
                       <div >
                         <Button
@@ -186,20 +176,20 @@ class Landing extends React.Component {
                   />
                   <br></br>
                   <br></br>
-                  <h6>Testez gratuitement votre plateforme
+                  <h6 style={{"font-weight": "bolder"}}>Testez gratuitement votre plateforme
                     pendant 7 jours.</h6>
                 </Col>
                 <Col className="order-md-1" md="6">
                   <div className="pr-md-5">
                     <h3>BIG DATA ET VEILLE JURIDIQUES</h3>
-                    <p align="justify">
+                    <p align="justify" style={{"font-weight": "bolder"}}>
                       LEGALOA regroupe toute la règlementation juridique disponible
                       et la rend accessible directement via son moteur de recherche
                       intelligent. Faites vos recherches en utilisant également notre
                       filtre en choisissant les types de documents, domaines du droit,
                       organismes , ou simplement en tapant une date de référence.
                     </p>
-                    <p align="justify">
+                    <p align="justify" style={{"font-weight": "bolder"}}>
                       Grâce à son outil de veille intégré, restez informer sur l'actualité
                       juridique.
                     </p>
@@ -207,7 +197,7 @@ class Landing extends React.Component {
                       <li className="py-2">
                         <div className="d-flex align-items-center">
                           <div>
-                            <p className="mb-0" align="justify">
+                            <p className="mb-0" align="justify" style={{"font-weight": "bolder"}}>
                               - Accéder au plus grand fonds juridique burkinabè en un
                               seul clic.
                             </p>
@@ -217,7 +207,7 @@ class Landing extends React.Component {
                       <li className="py-2">
                         <div className="d-flex align-items-center">
                           <div>
-                            <p className="mb-0" align="justify"> - Tous les textes de l’OHADA (Traités, Règlements &
+                            <p className="mb-0" align="justify" style={{"font-weight": "bolder"}}> - Tous les textes de l’OHADA (Traités, Règlements &
                               jurisprudences) ainsi que d’autres organisations régionales
                               et internationales</p>
                           </div>
@@ -229,7 +219,7 @@ class Landing extends React.Component {
                           color="default"
                           href="login-page"
                         >
-                          <span className="btn-inner--text">Testez gratuitement.</span>
+                          <span className="btn-inner--text" style={{"font-weight": "bold"}}>Testez gratuitement.</span>
                         </Button>
                       </div>
                     </ul>
@@ -281,11 +271,11 @@ class Landing extends React.Component {
                       <i className="ni ni-settings" />
                     </div>
                     <h3>Avoir l'information juridique à portée de mains.</h3>
-                    <p align="justify">
+                    <p align="justify" style={{"font-weight": "bolder"}}>
                       Grace à son moteur de recherche, Legaloa vous permet de retrouver rapidement le contenu de n'importe quel texte juridique
                       ainsi que de la jurisprudence en toute simplicité.
                     </p>
-                    <p align="justify">
+                    <p align="justify" style={{"font-weight": "bolder"}}>
                       Plus besoin de se perdre dans les supports papiers, les recherches infructueuses et les déplacements incessantes.
                       Accéder simplement aux décisions de justice de la première instance à la cour de cassation,  aux lois, règlements, décrets, circulaires... n'importe où que vous soyez.
                     </p>
@@ -309,11 +299,11 @@ class Landing extends React.Component {
                       <p className="text-white" align="justify">
                       LEGALOA est une plateforme qui rassemble et met à la disposition des hommes de lois 
                       (Avocats, Services juridiques des entreprises, universitaires...),
-                      les textes juridiques et jurisprudences spécifiques aux pays d’Afrique del’Ouest, quelque soit la juridiction.
+                      les textes juridiques et jurisprudences spécifiques aux pays d’Afrique de l’Ouest, quelque soit la juridiction.
                       </p>
                       <p className="text-white" align="justify">
                         Nous collectons et numérisons les textes juridiques en vigueurs dans les Etats membres
-                        de l’OHADA en Commençant par le Burkina Faso et les rendons accessibles via un
+                        de l’OHADA et les rendons accessibles via un
                         moteur de recherche puissant utilisant l’intelligence artificielle et compresser ainsi le
                         temps de recherche.
                       </p>
@@ -332,7 +322,7 @@ class Landing extends React.Component {
                   <div className="position-relative pl-4">
                     <img
                       alt="..."
-                      style={{ maxWidth: "100%", maxHeight: "100%" }}
+                      style={{ maxWidth: "140%", maxHeight: "100%" }}
                       className="img-center img-fluid"
                       src={img4}
                     />
@@ -379,17 +369,10 @@ class Landing extends React.Component {
                     />
                     <div className="pt-4 text-center">
                       <h5 className="title">
-                        <span className="d-block mb-1">Sadam</span>
+                        <span className="d-block mb-1">Sadam SIBY</span>
                         <small className="h6 text-muted">CEO</small>
                       </h5>
                       <div className="mt-3">
-                        <Button
-                          className="btn-icon-only rounded-circle"
-                          color="warning"
-                          href="https://twitter.com/SadamSiby?t=lC-FzQu1_JxjraroEcJWlw&s=08"
-                        >
-                          <i className="fa fa-twitter" />
-                        </Button>
                         <Button
                           className="btn-icon-only rounded-circle ml-1"
                           color="warning"
@@ -413,35 +396,28 @@ class Landing extends React.Component {
                     <img
                       alt="..."
                       className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                      src="https://lh5.googleusercontent.com/proxy/PigxOVqG50fy57LwMQ2bBdvp09o93GgNLwLYLxUsW-9IW7MEkeJySNjZX_ikleNQalqnso0L8RJ3212xKWdkhAiuMmCvFQCkIkFyUT9kaTwlJyg=s0-d"
+                      src="https://scontent-dus1-1.xx.fbcdn.net/v/t1.6435-9/195062504_2060257334112203_1849356124809938847_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=96NO-BaTuZ8AX-FkP1o&_nc_ht=scontent-dus1-1.xx&oh=00_AT_rFme4GuKJ6SCf9owZ90tL5HzzBpSfMDH6-l1BrFB2GQ&oe=6256482A"
                       style={{ width: "200px" }}
                     />
                     <div className="pt-4 text-center">
                       <h5 className="title">
-                        <span className="d-block mb-1">Dante</span>
+                        <span className="d-block mb-1">Dante Cruz</span>
                         <small className="h6 text-muted">
                           Developpeur Web
                         </small>
                       </h5>
                       <div className="mt-3">
                         <Button
-                          className="btn-icon-only rounded-circle"
-                          color="primary"
-                          href=""
-                        >
-                          <i className="fa fa-twitter" />
-                        </Button>
-                        <Button
                           className="btn-icon-only rounded-circle ml-1"
                           color="primary"
-                          href=""
+                          href="https://www.facebook.com/dante.cruzroque/"
                         >
                           <i className="fa fa-facebook" />
                         </Button>
                         <Button
                           className="btn-icon-only rounded-circle ml-1"
                           color="primary"
-                          href=""
+                          href="https://www.linkedin.com/in/dante-cruz-roque-622705161/"
                         >
                           <i className="fa fa-linkedin" />
                         </Button>
@@ -472,11 +448,11 @@ class Landing extends React.Component {
                           <div className="icon icon-shape icon-shape-primary rounded-circle mb-4">
                             <i className="ni ni-check-bold" />
                           </div>
-                          <h6 className="text-primary text-uppercase">
+                          <h6 className="text-primary text-uppercase" style={{"font-weight": "bolder"}}>
                             Avocat/Cabinet
                             d’avocat
                           </h6>
-                          <p className="description mt-3">
+                          <p className="description mt-3" style={{"font-weight": "bolder"}}>
                             Offre personnalisée
                           </p>
                           <Link className="nav-link"
@@ -489,6 +465,7 @@ class Landing extends React.Component {
                               className="mt-4"
                               color="primary"
                               href=""
+                              style={{"font-weight": "bolder"}}
                             >
                               Nous contacter
                             </Button>
@@ -502,11 +479,11 @@ class Landing extends React.Component {
                           <div className="icon icon-shape icon-shape-success rounded-circle mb-4">
                             <i className="ni ni-check-bold" />
                           </div>
-                          <h6 className="text-success text-uppercase">
+                          <h6 className="text-success text-uppercase" style={{"font-weight": "bolder"}}> 
                             Entreprises et autres
                             professions
                           </h6>
-                          <p className="description mt-3">
+                          <p className="description mt-3" style={{"font-weight": "bolder"}}>
                             Offre personnalisée
                           </p>
 
@@ -520,6 +497,7 @@ class Landing extends React.Component {
                               className="mt-4"
                               color="success"
                               href=""
+                              style={{"font-weight": "bolder"}}
                             >
                               Nous contacter
                             </Button>
@@ -533,10 +511,10 @@ class Landing extends React.Component {
                           <div className="icon icon-shape icon-shape-warning rounded-circle mb-4">
                             <i className="ni ni-check-bold" />
                           </div>
-                          <h6 className="text-warning text-uppercase">
+                          <h6 className="text-warning text-uppercase" style={{"font-weight": "bolder"}}>
                             Offre étudiante
                           </h6>
-                          <p className="description mt-3">
+                          <p className="description mt-3" style={{"font-weight": "bolder"}}>
                             Offre adaptée
                           </p>
                           <Link className="nav-link"
@@ -549,6 +527,7 @@ class Landing extends React.Component {
                               className="mt-4"
                               color="warning"
                               href=""
+                              style={{"font-weight": "bolder"}}
                             >
                               Nous contacter
                             </Button>
@@ -646,6 +625,8 @@ class Landing extends React.Component {
                                 <Input type="number"
                                   placeholder="Nombre d'utilisateurs"
                                   className="form-control"
+                                  value = "1"
+                                  min="0"
                                   validations={[required]}
                                   name="nomUtilisateurs" />
                               </InputGroup>

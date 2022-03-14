@@ -1,3 +1,56 @@
+@media (min-width: 1200px) {
+
+  .bgimg {
+          background-image: url('../../assets/img/brand/accueil.png');
+          background-repeat: no-repeat;
+          background-position: 'center';
+          background-size: 'cover';
+          padding-top: '160px';
+          background-size:100% auto;
+      }
+  
+  }
+  
+  /*Hide in Other Small Devices */
+  
+  
+  /* Landscape tablets and medium desktops */
+  @media (min-width: 992px) and (max-width: 1199px) {
+  
+        .bgimg {
+          background-image: none;
+      }
+  
+  }
+  
+  /* Portrait tablets and small desktops */
+  @media (min-width: 768px) and (max-width: 991px) {
+  
+            .bgimg {
+          background-image: none;
+      }
+  
+  }
+  
+  /* Landscape phones and portrait tablets */
+  @media (max-width: 767px) {
+  
+            .bgimg {
+          background-image: none;
+      }
+  
+  }
+  
+  /* Portrait phones and smaller */
+  @media (max-width: 480px) {
+  
+            .bgimg {
+          background-image: none;
+      }
+  
+  }
+
+
 input[type=text], select, textarea{
     width: 100%;
     padding: 12px;

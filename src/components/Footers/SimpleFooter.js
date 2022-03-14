@@ -1,5 +1,7 @@
 /*eslint-disable*/
 import React from "react";
+import { Link } from 'react-scroll';
+
 // reactstrap components
 import {
   Button,
@@ -22,23 +24,9 @@ class SimpleFooter extends React.Component {
               <Col lg="6"></Col>
               <Col className="text-lg-center btn-wrapper" lg="6">
                 <Button
-                  className="btn-icon-only rounded-circle"
-                  color="twitter"
-                  href="https://twitter.com/SadamSiby?t=lC-FzQu1_JxjraroEcJWlw&s=08"
-                  id="tooltip475038074"
-                  target="_blank"
-                >
-                  <span className="btn-inner--icon">
-                    <i className="fa fa-twitter" />
-                  </span>
-                </Button>
-                <UncontrolledTooltip delay={0} target="tooltip475038074">
-                  Follow us
-                </UncontrolledTooltip>
-                <Button
                   className="btn-icon-only rounded-circle ml-1"
                   color="facebook"
-                  href="https://www.facebook.com/sadam.Siby"
+                  href="https://www.facebook.com/profile.php?id=100077781368173"
                   id="tooltip837440414"
                   target="_blank"
                 >
@@ -52,7 +40,7 @@ class SimpleFooter extends React.Component {
                 <Button
                   className="btn-icon-only rounded-circle ml-1"
                   color="github"
-                  href="https://www.linkedin.com/in/sadam-siby-43134b123/"
+                  href="https://www.linkedin.com/in/legaloa-plateforme-834629230/"
                   id="tooltip495507257"
                   target="_blank"
                 >
@@ -84,27 +72,29 @@ class SimpleFooter extends React.Component {
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink
-                      href="https://www.creative-tim.com/presentation?ref=adsr-footer"
-                      target="_blank"
-                    >
-                      À propos de nous
-                    </NavLink>
+                  <Link  className="nav-link"
+                  href="" 
+                  onClick={this.handleScroll}        
+                  to="about"
+                  spy={true} 
+                  smooth={true}>
+                    À propos <span className="sr-only">(current)</span>
+                </Link >
                   </NavItem>
                   <NavItem>                  <NavLink
-                    href="https://www.doctrine.fr/cgu?source=footer_static"
+                    href=""
                     target="_blank"
                   >
                     CGU
                   </NavLink></NavItem>
                   <NavItem>                  <NavLink
-                    href="https://www.doctrine.fr/donnees_personnelles?source=footer_static"
+                    href=""
                     target="_blank"
                   >
                     Données personnelles
                   </NavLink></NavItem>
                   <NavItem>                  <NavLink
-                    href="https://www.doctrine.fr/cookies"
+                    href=""
                     target="_blank"
                   >
                     Politique de Cookies
